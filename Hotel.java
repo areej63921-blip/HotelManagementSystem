@@ -2,17 +2,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Hotel {
-    private String name; // From Fig 7 (name: Name)
-    private List<Room> rooms;
-    private List<RoomType> roomTypes;
+    private String name;
+    private List<Room> rooms = new ArrayList<>();
 
     public Hotel(String name) {
-        if (name == null || name.trim().isEmpty()) {
-            throw new IllegalArgumentException("Hotel name is required.");
-        }
         this.name = name;
-        this.rooms = new ArrayList<>();
-        this.roomTypes = new ArrayList<>();
+    }
+
+    // Helper method to add rooms to hotel
+    public void addRoom(Room room) {
+        rooms.add(room);
+    }
+
+    // Fig 16: Logic to check if any room is FREE
+    public Room findFreeRoom() {
+        for (Room room : rooms) {
+            if (room.getStatus() == Room.RoomStatus.FREE) {
+                return room; // Return the first free room found
+            }
+        }
+        return null; // No room available
     }
 
     public String getName() { return name; }

@@ -1,21 +1,26 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class HotelChain {
-    // Fig 14: Using Name as a Qualifier for Hotels
     private Map<String, Hotel> hotels = new HashMap<>();
-    
-    // Fig 14: Using ID as a Qualifier for ReserverPayers
     private Map<String, ReserverPayer> customers = new HashMap<>();
 
     public void addHotel(Hotel hotel) {
-        if (hotel == null) throw new IllegalArgumentException("Hotel cannot be null.");
         hotels.put(hotel.getName(), hotel);
     }
 
-    public void addCustomer(ReserverPayer customer) {
-        if (customer == null) throw new IllegalArgumentException("Customer cannot be null.");
-        customers.put(customer.getId(), customer);
-    }
-} 
+    // Fig 15: Interaction logic
+    public void processReservationRequest(String hotelName, String customerId) {
+        Hotel hotel = hotels.get(hotelName);
+        if (hotel == null) throw new IllegalArgumentException("Hotel not found!");
 
+        // Step 1: Communication with Hotel object
+        Room availableRoom = hotel.findFreeRoom();
+
+        if (availableRoom != null) {
+            System.out.println("Room " + availableRoom.getNumber() + " is available in " + hotelName);
+            // In Version 5, we will link this to a Reservation object
+        } else {
+            System.out.println("No rooms available in " + hotelName);
+        }
+    }
+}
