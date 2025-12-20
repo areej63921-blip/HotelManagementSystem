@@ -22,4 +22,7 @@ public class Reservation {
     }
 
     public int getNumber() { return number; }
+    public Room getRoom() {
+    return this.room;
+}
 }

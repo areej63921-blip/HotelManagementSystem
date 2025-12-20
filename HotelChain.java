@@ -29,4 +29,29 @@ public class HotelChain {
             System.out.println("Sorry: No rooms available in " + hotelName);
         }
     }
+    public void checkIn(int reservationNumber, String guestName, String passport) {
+    Reservation foundRes = null;
+    
+    // Find the reservation
+    for (Reservation res : allReservations) {
+        if (res.getNumber() == reservationNumber) {
+            foundRes = res;
+            break;
+        }
+    }
+
+    if (foundRes != null) {
+        // Fig 11 & 12: Create Guest and link to Room
+        Guest guest = new Guest(guestName, passport);
+        
+        // Accessing the room via reservation and changing state
+        // (Note: We'll add a getter in Reservation for this)
+        Room room = foundRes.getRoom(); 
+        room.checkIn(); // Switches state to OCCUPIED (from V3)
+        
+        System.out.println("Check-in Successful: " + guestName + " is now in Room " + room.getNumber());
+    } else {
+        throw new NoSuchElementException("No reservation found with number: " + reservationNumber);
+    }
+}
 }
