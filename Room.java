@@ -1,16 +1,39 @@
 public class Room {
-    private int number; // From Fig 7 (number: Integer)
-    private String state; // state: free, reserved, occupied (From State Chart Fig 19)
+    // Fig 19: Defining States
+    public enum RoomStatus {
+        FREE, RESERVED, OCCUPIED
+    }
+
+    private int number;
+    private RoomStatus status;
 
     public Room(int number) {
-        // Defensive Check: Iqra Uni requirement for valid data
         if (number <= 0) {
             throw new IllegalArgumentException("Room number must be positive.");
         }
         this.number = number;
-        this.state = "free"; // Default starting state
+        this.status = RoomStatus.FREE; // Default state from Fig 19
+    }
+
+    // Methods to handle transitions based on State Chart
+    public void reserve() {
+        if (this.status != RoomStatus.FREE) {
+            throw new IllegalStateException("Room is not FREE to be reserved.");
+        }
+        this.status = RoomStatus.RESERVED;
+    }
+
+    public void checkIn() {
+        if (this.status == RoomStatus.OCCUPIED) {
+            throw new IllegalStateException("Room is already occupied.");
+        }
+        this.status = RoomStatus.OCCUPIED;
+    }
+
+    public void makeFree() {
+        this.status = RoomStatus.FREE;
     }
 
     public int getNumber() { return number; }
-    public String getState() { return state; }
+    public RoomStatus getStatus() { return status; }
 }
