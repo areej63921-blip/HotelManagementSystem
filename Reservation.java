@@ -1,11 +1,12 @@
 import java.util.Date;
 
 public class Reservation {
-    private int number;
+    private Date reservationDate;
     private Date startDate;
     private Date endDate;
-    private Room room;
-    private ReserverPayer payer;
+    private int number; 
+    private Room room;          
+    private ReserverPayer payer; 
 
     public Reservation(int number, Date start, Date end, Room room, ReserverPayer payer) {
         this.number = number;
@@ -13,15 +14,13 @@ public class Reservation {
         this.endDate = end;
         this.room = room;
         this.payer = payer;
-        this.room.reserve();
+        this.reservationDate = new Date();
     }
 
-    public int getNumber() { return number; }
-    public Room getRoom() { return room; }
-
-    // Is method ko call karne se saare fields "used" ho jayenge
-    public void printReservationDetails() {
-        System.out.println("Reservation #" + number + " from " + startDate + " to " + endDate);
-        System.out.println("Booked by: " + payer.getPayerSummary());
+    public void printReservationLog() {
+        
+        System.out.println("Res #" + number + " created on " + reservationDate);
+        System.out.println("From: " + startDate + " To: " + endDate);
+        System.out.println("Payer: " + payer.getName());
     }
 }

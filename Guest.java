@@ -1,14 +1,17 @@
 public class Guest {
-    private String name;
-    private String passportNumber;
+    private String name;           
+    private String addressDetails; 
 
-    public Guest(String name, String passportNumber) {
+    public Guest(String name, String address) {
         this.name = name;
-        this.passportNumber = passportNumber;
+        this.addressDetails = address;
     }
 
-    // Is method se passportNumber use ho jayega aur warning chali jayegi
-    public String getGuestSummary() {
-        return "Guest Name: " + name + ", Passport: " + passportNumber;
+    public String getName() { 
+        return name; 
+    }
+
+    public String getAddress() {
+        return addressDetails; 
     }
 }

@@ -1,27 +1,29 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Hotel {
-    private String name;
+    private String name; 
     private List<Room> rooms = new ArrayList<>();
 
     public Hotel(String name) {
         this.name = name;
     }
 
-    // Helper method to add rooms to hotel
-    public void addRoom(Room room) {
-        rooms.add(room);
+    public void createReservation() {
+        // Implementation for later
     }
 
-    // Fig 16: Logic to check if any room is FREE
-    public Room findFreeRoom() {
-        for (Room room : rooms) {
-            if (room.getStatus() == Room.RoomStatus.FREE) {
-                return room; // Return the first free room found
+    public boolean available(RoomType type) {
+        for (Room r : rooms) {
+            // Ab r.getRoomType() aur r.getStatus() Room class mein maujood hain
+            if (r.getRoomType().equals(type) && r.getStatus() == Room.RoomStatus.FREE) {
+                return true;
             }
         }
-        return null; // No room available
+        return false;
+    }
+
+    public void addRoom(Room room) {
+        rooms.add(room);
     }
 
     public String getName() { return name; }

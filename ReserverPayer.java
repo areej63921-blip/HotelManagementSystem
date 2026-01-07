@@ -1,18 +1,19 @@
 public class ReserverPayer {
-    private String id;
+    private String creditCardDetails; 
+    private String id;                
     private String name;
-    private String creditCardDetails;
 
-    public ReserverPayer(String id, String name, String creditCard) {
+    public ReserverPayer(String id, String name, String cc) {
         this.id = id;
         this.name = name;
-        this.creditCardDetails = creditCard;
+        this.creditCardDetails = cc;
     }
 
-    public String getId() { return id; }
+    public String getName() { 
+        return name; 
+    }
 
-    // In variables ko use karne ke liye ye method add karein
-    public String getPayerSummary() {
-        return "Payer: " + name + " (Card: " + creditCardDetails + ")";
+    public String getPaymentInfo() {
+        return "ID: " + id + ", Card: " + creditCardDetails; 
     }
 }
