@@ -9,12 +9,12 @@ public class Hotel {
     }
 
     public void createReservation() {
-        // Implementation for later
+        
+        System.out.println("[Hotel] " + name + " is now processing a new reservation request.");
     }
 
     public boolean available(RoomType type) {
         for (Room r : rooms) {
-            // Ab r.getRoomType() aur r.getStatus() Room class mein maujood hain
             if (r.getRoomType().equals(type) && r.getStatus() == Room.RoomStatus.FREE) {
                 return true;
             }
@@ -27,4 +27,6 @@ public class Hotel {
     }
 
     public String getName() { return name; }
+    
+    public List<Room> getRooms() { return rooms; }
 }
