@@ -4,9 +4,9 @@ public class Reservation {
     private Date reservationDate;
     private Date startDate;
     private Date endDate;
-    private int number; 
-    private Room room;          
-    private ReserverPayer payer; 
+    private int number;
+    private Room room;
+    private ReserverPayer payer;
 
     public Reservation(int number, Date start, Date end, Room room, ReserverPayer payer) {
         this.number = number;

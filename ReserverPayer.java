@@ -1,6 +1,6 @@
 public class ReserverPayer {
-    private String creditCardDetails; 
-    private String id;                
+    private String creditCardDetails;
+    private String id;
     private String name;
 
     public ReserverPayer(String id, String name, String cc) {
@@ -9,8 +9,8 @@ public class ReserverPayer {
         this.creditCardDetails = cc;
     }
 
-    public String getName() { 
-        return name; 
+    public String getName() {
+        return name;
     }
 
     public String getPaymentInfo() {

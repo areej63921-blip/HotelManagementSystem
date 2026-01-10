@@ -1,6 +1,6 @@
 public class RoomType {
-    private String kind; 
-    private double cost;   
+    private String kind;
+    private double cost;
 
     public RoomType(String kind, double cost) {
         this.kind = kind;
@@ -8,6 +8,10 @@ public class RoomType {
     }
 
     public double getPrice() {
-        return cost; 
+        return cost;
+    }
+    
+    public String getKind() {
+        return kind;
     }
 }

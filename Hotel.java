@@ -7,7 +7,7 @@ public class Hotel {
     public Hotel(String name) {
         this.name = name;
     }
-
+    
     public void createReservation() {
         
         System.out.println("[Hotel] " + name + " is now processing a new reservation request.");
