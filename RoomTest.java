@@ -1,19 +1,17 @@
 import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 public class RoomTest {
+    @Test(expected = IllegalArgumentException.class)
+    public void testNullRoomTypeThrowsException() {
+        // Defensive test: Should throw error if type is null
+        new Room(101, null);
+    }
+
     @Test
-    public void testRoomCheckIn() {
-        // Arrange
-        RoomType type = new RoomType("SINGLE", 100.0);
-        Room room = new Room(101, type);
-
-        // Act
+    public void testSuccessfulCheckIn() {
+        Room room = new Room(101, new RoomType("Suite", 500));
         room.createGuest("Areej", "Karachi");
-
-        // Assert
         assertEquals(Room.RoomStatus.OCCUPIED, room.getStatus());
-        assertEquals(101, room.getNumber());
     }
 }

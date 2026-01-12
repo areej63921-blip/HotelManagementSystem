@@ -17,7 +17,11 @@ public class HotelChain {
     private boolean canCheckInGuest() { return true; }
     private boolean canCheckOutGuest() { return true; }
 
-    public void addHotel(Hotel hotel) { hotels.put(hotel.getName(), hotel); }
-    
+    public void addHotel(Hotel hotel) {
+    if (hotel == null) {
+        throw new IllegalArgumentException("Cannot add a null hotel to the chain.");
+    }
+    hotels.put(hotel.getName(), hotel);
+}
     public void registerCustomer(ReserverPayer c) { customers.put(c.getName(), c); }
 }
