@@ -1,29 +1,20 @@
 import java.util.Date;
 
 public class Reservation {
-    private final Date reservationDate;
-    private final Date startDate;
-    private final Date endDate;
-    private final int number;
-    private final Room room;
-    private final ReserverPayer payer;
+    // UML Attributes
+    private Date reservationDate; 
+    private Date startDate;       
+    private Date endDate;         
+    private Integer number;       
 
-    public Reservation(int number, Date start, Date end, Room room, ReserverPayer payer) {
-        // Defensive: Check for nulls and logical dates
-        if (start == null || end == null) throw new NullPointerException("Reservation dates cannot be null.");
-        if (end.before(start)) throw new IllegalArgumentException("End date cannot be before start date.");
-        if (room == null || payer == null) throw new IllegalArgumentException("Room and Payer must be provided.");
-
+    public Reservation(Date reservationDate, Date startDate, Date endDate, Integer number) {
+        this.reservationDate = reservationDate;
+        this.startDate = startDate;
+        this.endDate = endDate;
         this.number = number;
-        this.startDate = start;
-        this.endDate = end;
-        this.room = room;
-        this.payer = payer;
-        this.reservationDate = new Date();
     }
 
-    public void printReservationLog() {
-        System.out.println("Res #" + number + " for Room: " + room.getNumber());
-        System.out.println("Status: Confirmed for " + payer.getName());
+    public Integer getNumber() {
+        return number;
     }
 }

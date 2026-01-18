@@ -1,34 +1,31 @@
 import java.util.*;
 
 public class Hotel {
-    private final String name; 
-    private final List<Room> rooms = new ArrayList<>();
+    private Name name; 
 
-    public Hotel(String name) {
-        if (name == null || name.trim().isEmpty()) throw new IllegalArgumentException("Hotel name cannot be empty.");
+    private List<RoomType> roomTypes; 
+    private List<Room> rooms;
+
+    public Hotel(Name name) {
         this.name = name;
+        this.rooms = new ArrayList<>();
+        this.roomTypes = new ArrayList<>(); 
     }
 
-    public boolean available(RoomType type) {
-        if (type == null) return false; // Defensive check
+        public boolean available(RoomType type) {
         for (Room r : rooms) {
-            if (r.getRoomType().equals(type) && r.getStatus() == Room.RoomStatus.FREE) {
+            if (r.getRoomType() == type && r.getOccupant() == null) {
                 return true;
             }
         }
         return false;
     }
 
-     public void createReservation() {
-
-        
-
-        System.out.println("[Hotel] " + name + " is now processing a new reservation request.");
-
-    }
-    public void addRoom(Room room) {
-        if (room != null) rooms.add(room);
+    public void createReservation() {
+        System.out.println("Processing reservation in " + name.toString());
     }
 
-    public String getName() { return name; }
+    public Name getName() { return name; }
+    
+    public void addRoom(Room r) { rooms.add(r); }
 }

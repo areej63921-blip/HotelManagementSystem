@@ -1,17 +1,17 @@
 public class RoomType {
-    private String kind;
-    private double cost;
+    private RoomKind kind;
+    private Money cost;
 
-    public RoomType(String kind, double cost) {
+    public RoomType(RoomKind kind, Money cost) {
         this.kind = kind;
         this.cost = cost;
     }
 
-    public double getPrice() {
-        return cost;
-    }
-    
-    public String getKind() {
+    public RoomKind getKind() {
         return kind;
+    }
+
+    public Money getCost() {
+        return cost;
     }
 }

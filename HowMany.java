@@ -1,5 +1,5 @@
 public class HowMany {
-    private int number; // number: Integer
+    private int number;
 
     public HowMany(int number) {
         this.number = number;

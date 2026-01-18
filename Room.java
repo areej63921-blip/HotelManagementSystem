@@ -1,25 +1,19 @@
 public class Room {
-    public enum RoomStatus { FREE, RESERVED, OCCUPIED }
+    private Integer number;
+    private RoomType roomType;
     
-    private final int number;
-    private RoomStatus status = RoomStatus.FREE;
-    private final RoomType roomType;
     private Guest occupant;
 
-    public Room(int number, RoomType type) {
-        if (type == null) throw new IllegalArgumentException("Room must have a valid RoomType.");
+    public Room(Integer number, RoomType type) {
         this.number = number;
         this.roomType = type;
     }
 
-    public void createGuest(String name, String address) {
-       
-        if (name == null || name.isEmpty()) throw new IllegalArgumentException("Guest name cannot be empty.");
+    public void createGuest(Name name, Address address) {
         this.occupant = new Guest(name, address);
-        this.status = RoomStatus.OCCUPIED;
     }
 
+    public Integer getNumber() { return number; }
     public RoomType getRoomType() { return roomType; }
-    public RoomStatus getStatus() { return status; }
-    public int getNumber() { return number; }
+    public Guest getOccupant() { return occupant; }
 }

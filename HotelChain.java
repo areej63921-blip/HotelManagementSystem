@@ -1,27 +1,56 @@
 import java.util.*;
 
 public class HotelChain {
-    private Map<String, Hotel> hotels = new HashMap<>();
-    private Map<String, ReserverPayer> customers = new HashMap<>(); // Warning fixed
-    private List<Reservation> reservations = new ArrayList<>();
+    // UML Relationships (Lines in Diagram)
+    private List<Hotel> hotels = new ArrayList<>(); // Association with Hotel
+    private List<ReserverPayer> payers = new ArrayList<>(); // Association with ReserverPayer
 
-    public void performMaintenance() {
-        if(canMakeReservation() && canCancelReservation() && canCheckInGuest() && canCheckOutGuest()) {
-            
-            System.out.println("System: Hotels=" + hotels.size() + ", Customers=" + customers.size() + ", Res=" + reservations.size());
+    // --- UML Public Operations (+) ---
+    
+    public void makeReservation() {
+        if (canMakeReservation()) {
+            System.out.println("Reservation process started.");
         }
     }
 
-    private boolean canMakeReservation() { return true; }
-    private boolean canCancelReservation() { return true; }
-    private boolean canCheckInGuest() { return true; }
-    private boolean canCheckOutGuest() { return true; }
-
-    public void addHotel(Hotel hotel) {
-    if (hotel == null) {
-        throw new IllegalArgumentException("Cannot add a null hotel to the chain.");
+    public void cancelReservation() {
+        if (canCancelReservation()) {
+            System.out.println("Reservation cancelled.");
+        }
     }
-    hotels.put(hotel.getName(), hotel);
-}
-    public void registerCustomer(ReserverPayer c) { customers.put(c.getName(), c); }
+
+    public void checkInGuest() {
+        if (canCheckInGuest()) {
+            System.out.println("Guest checked in.");
+        }
+    }
+
+    public void checkOutGuest() {
+        if (canCheckOutGuest()) {
+            System.out.println("Guest checked out.");
+        }
+    }
+
+    public void createReserverPayer() {
+        // UML mein iska naam 'createReserverPayer' hai
+        System.out.println("New ReserverPayer created.");
+    }
+
+    // --- UML Private Operations (-) ---
+    
+    private boolean canMakeReservation() { 
+        return true; 
+    }
+
+    private boolean canCancelReservation() { 
+        return true; 
+    }
+
+    private boolean canCheckInGuest() { 
+        return true; 
+    }
+
+    private boolean canCheckOutGuest() { 
+        return true; 
+    }
 }

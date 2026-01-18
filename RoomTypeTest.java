@@ -3,11 +3,16 @@ import org.junit.Test;
 
 public class RoomTypeTest {
     @Test
-    public void testPrice() {
-        // Arrange
-        RoomType rt = new RoomType("DELUXE", 1000.0);
-        
-        // Act & Assert
-        assertEquals(1000.0, rt.getPrice(), 0.001);
+    public void testRoomTypeDetails() {
+        // 1. Arrange
+        RoomKind kind = RoomKind.DELUXE;
+        Money cost = new Money(1000.0);
+
+        // 2. Act: 
+        RoomType rt = new RoomType(kind, cost);
+
+        // 3. Assert:
+        assertEquals(RoomKind.DELUXE, rt.getKind());
+        assertEquals(1000.0, rt.getCost().getAmount(), 0.001);
     }
 }
